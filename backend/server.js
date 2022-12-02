@@ -7,8 +7,8 @@ const upload = multer();
 const productRoute = require('./routes/api/productRoute');
 
 // Connecting to the Database
-let mongodb_url = 'mongodb://localhost/';
-let dbName = 'yolomy';
+let mongodb_url = 'mongodb+srv://peter:123gakur@yolo2.lqtezl8.mongodb.net/?retryWrites=true';
+let dbName = 'yolo2';
 
 // define a url to connect to the database
 const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
@@ -46,3 +46,5 @@ const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=>{
     console.log(`Server listening on port ${PORT}`)
 })
+
+// module.exports = app;
