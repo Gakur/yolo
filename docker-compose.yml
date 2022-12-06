@@ -1,31 +1,49 @@
 version: '3.8'
 services:
   backend: 
-    build: .
-    environment:
+    build: 
+      context: .
+      dockerfile: backend/Dockerfile
+    image: peterking99/backend:1.0
+    container_name: backend
     ports:
-    - '5000:5000'
+      - '5000:5000'
     networks:
-      - networkName
-    depend_on:
-    volumes:
-    - 
-    command: 
+      - yolo_net
+    depends_on:
+      - mongo
+    # volumes:
+    #   - database:/data/db
+
 
 
   client: 
-    build: .
-    environment:
+    build: ./client
+    image: peterking99/client:1.0
+    container_name: client
     ports:
-    - '3000:3000'
+      - '3000:3000'
     networks:
-    - networkName
-    depend_on:
-    volumes:
-    - version
-    links:
-    - backend
-    
-volumes:
+      - yolo_net
+    depends_on:
+      - backend
+    # links:
+    #   - backend
 
+  mongo:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: peter
+      MONGO_INITDB_ROOT_PASSWORD: 123gakur
+    volumes:
+      - database:/data/db
+    networks:
+     -  yolo_net
+volumes:
+  database:
 networks:
+  yolo_net:
+    driver: bridge
