@@ -7,11 +7,11 @@ WORKDIR /app
 
 
 #Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY package*.json . /
 
 
 #Install Dependencies
-RUN npm install 
+RUN npm install backend
 
 
 #Copy the rest of the app to the working directory
