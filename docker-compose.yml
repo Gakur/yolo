@@ -2,33 +2,33 @@ version: '3.8'
 services:
   backend: 
     build: 
-      context: .
-      dockerfile: backend/Dockerfile
+      context: ./backend
     image: peterking99/backend:1.0
     container_name: backend
+    environment:
+      MONGODB_URI: 'mongodb://mongo:27017'
     ports:
-      - '5000:5000'
+      - '3000:3000'
     networks:
       - yolo_net
     depends_on:
-      - mongo
+      - mongo 
     # volumes:
     #   - database:/data/db
 
 
 
   client: 
-    build: ./client
+    build: 
+      context: ./client
     image: peterking99/client:1.0
     container_name: client
     ports:
-      - '3000:3000'
+      - '5000:5000'
     networks:
       - yolo_net
     depends_on:
-      - backend
-    # links:
-    #   - backend
+      - backend  
 
   mongo:
     image: mongo

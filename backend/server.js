@@ -12,6 +12,7 @@ let dbName = 'yolo2';
 
 // define a url to connect to the database
 const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
+console.log(MONGODB_URI)
 mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true  } )
 let db = mongoose.connection;
 
@@ -41,7 +42,7 @@ app.use(cors());
 app.use('/api/products', productRoute)
 
 // Define the PORT
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, ()=>{
     console.log(`Server listening on port ${PORT}`)
