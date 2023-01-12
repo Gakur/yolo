@@ -35,6 +35,10 @@
           - npm
           - ntp
           - docker-compose
+          - gnupg
+          - software-properties-common
+          - curl
+          - pip 
         state: latest
         update_cache: true
 
@@ -53,6 +57,10 @@
         name: docker-ce
         state: latest
         update_cache: true
+
+    - name: Install Docker
+      pip:
+        name: docker
 
     - name: Start the application
       shell: docker-compose -f /home/p-jnr/yolo/docker-compose.yml up -d
