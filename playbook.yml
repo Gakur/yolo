@@ -1,9 +1,9 @@
 ---
-
 - hosts: all
   become: yes
 
   vars:
+    app_location: /home/user/yolo/
     container_count: 2
     default_container_name: docker
     default_container_image: node:alpine
@@ -15,6 +15,17 @@
         name: aptitude
         state: latest
         update_cache: true
+    
+    - name: Install git
+      apt: 
+        name: git
+        state: present
+        update_cache: true
+
+    - name: Clone repo
+      git:
+        repo: https://github.com/Gakur/yolo.git
+        dest: /home/user/yolo/
 
     - name: Install required system packages
       apt:
@@ -42,6 +53,10 @@
         state: latest
         update_cache: true
 
-    - name: Install Docker Module for Node 
-      npm:
-        name: docker
+    # - name: Install Docker Module for Node 
+    #   npm:
+    #     name: docker
+    - name: Start application
+      shell: docker-compose -f /home/user/yolo/docker-compose.yml up -d
+      args:
+        executable: /bin/bash
