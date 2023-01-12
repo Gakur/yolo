@@ -7,26 +7,17 @@ WORKDIR /usr/src/app/client
 
 
 #Copy package.json and package-lock.json to the working directory
-# COPY package*.json . /
-COPY . .
+COPY package*.json . /
 
 #Install Dependencies
-# RUN npm install 
 RUN npm install
 
 #Copy the rest of the app to the working directory
-# COPY . .
-FROM node
-
-RUN npm run: build
-
-WORKDIR /app
-
-COPY --from=build /app/build .
+COPY . .
 
 #Expose the port
-# EXPOSE 5000
+EXPOSE 3000
 
 
 #Define entry point
-CMD [ "start", "-p", "5000", "-s", "." ]
+CMD [ "npm", "start"]
