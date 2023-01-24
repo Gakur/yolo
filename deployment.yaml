@@ -2,19 +2,19 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "yolo-1"
+  name: "yolo"
   namespace: "default"
   labels:
-    app: "yolo-1"
+    app: "yolo"
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "yolo-1"
+      app: "yolo"
   template:
     metadata:
       labels:
-        app: "yolo-1"
+        app: "yolo"
     spec:
       containers:
       - name: "yolo-1"
@@ -25,14 +25,14 @@ spec:
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "yolo-1-hpa-t8ae"
+  name: "yolo-hpa-bryp"
   namespace: "default"
   labels:
-    app: "yolo-1"
+    app: "yolo"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "yolo-1"
+    name: "yolo"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
