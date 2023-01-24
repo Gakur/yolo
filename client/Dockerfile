@@ -16,7 +16,7 @@ RUN npm install
 COPY . .
 
 #Expose the port
-EXPOSE 5000
+EXPOSE 3000
 
 
 #Define entry point
