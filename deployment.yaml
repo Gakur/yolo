@@ -35,7 +35,7 @@ spec:
     name: "yolo3"
     apiVersion: "apps/v1"
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 3
   metrics:
   - type: "Resource"
     resource:
