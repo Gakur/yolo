@@ -7,7 +7,7 @@ metadata:
   labels:
     app: "yolo3"
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: "yolo3"
@@ -35,7 +35,7 @@ spec:
     name: "yolo3"
     apiVersion: "apps/v1"
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 5
   metrics:
   - type: "Resource"
     resource:
