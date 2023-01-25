@@ -16,12 +16,12 @@ spec:
       labels:
         app: "yolo3"
     spec:
-      restartPolicy: Never
       containers:
-      - name: "yolo-1"
-        image: "gcr.io/yoloproject-375307/github.com/gakur/yolo:$SHORT_SHA"
-      - name: "yolo-2"
-        image: "gcr.io/yoloproject-375307/github.com/gakur/yolo:$SHORT_SHA"
+      - name: "backend"
+        image: "peterking99/backend:1.0"
+      - name: "client"
+        image: "peterking99/client:1.0" 
+
 ---
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
@@ -43,4 +43,4 @@ spec:
       name: "cpu"
       target:
         type: "Utilization"
-        averageUtilization: 80
+        averageUtilization: 80        
