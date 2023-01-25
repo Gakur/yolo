@@ -21,3 +21,12 @@ Make sure that you have the following installed:
  `npm start`
 
  ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+
+ ### `kubectl create -f deployment.yaml`
+This creates a new yaml file to deploy the application
+
+### `service.yaml`
+Gives you an external link to expose the ports apllication on `port:3000`
+
+### Deployed Kubernetes 
+Open http://35.247.77.164:3000/ to view the running application on the browser
